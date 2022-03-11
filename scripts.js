@@ -1,29 +1,60 @@
-let addButton = document.querySelector("input#add-button")
-let generatorButton = document.querySelector("input#generator-button")
-let receivedNumber = document.querySelector("input#received-number")
-let select = document.querySelector("select#select-select")
-let text = document.createElement("option")
+let addButton = document.querySelector("input#add-button");
+let generatorButton = document.querySelector("input#generator-button");
+let receivedNumber = document.querySelector("input#received-number");
+let select = document.querySelector("select#select-select");
+let result = document.querySelector("div#div-result");
+let text = document.createElement("option");
+let verifyFinishClick = 1;
+const table = [];
 
-const table = []
-
-function adicionarAtivo (){
-
-    let numberValue = receivedNumber.value
-//adicionar()
-    table.push(numberValue)
-    console.log(text)
-    select.innerHTML += `<option> Valor ${numberValue} adicionado. </option>`
-    
-console.log(table)
-//validar()
-
-
+function adicionarAtivo() {
+  result.innerHTML = "";
+  let numberValue = Number(receivedNumber.value);
+  let index = table.findIndex((user) => user === numberValue);
+  const adicionar = (num) => {
+    table.push(num);
+    select.innerHTML += `<option> Valor ${num} adicionado. </option>`;
+  };
+  const validar = () => {
+    if (index !== -1) {
+      return alert(`Valor inválido, ${numberValue} já foi adicionado.`);
+    } else if (numberValue > 100 || numberValue < 1) {
+      return alert(
+        `Você digitou "${numberValue}" Valor inválido, selecione um número ENTRE 1 e 100!`
+      );
+    } else {
+      adicionar(numberValue);
+    }
+  };
+  validar();
 }
 
+function cliqueiAtivo() {
+  let quantityNumbers = table.length;
+  let sumAll = 0;
 
-const cliquei = () => console.log("cliquei")
+  if (select.length === 1) {
+    alert(`Você precisa adicionar um número, antes de clicar em finalizar.`);
+  } else {
+    table.sort();
 
+    result.innerHTML += `<p> Foram cadastrados ${quantityNumbers} números!</p>`;
+    result.innerHTML += `<p> O maior valor cadastrado foi ${
+      table[quantityNumbers - 1]
+    }! </p>`;
+    result.innerHTML += `<p> O menor valor cadastrado foi ${table[0]}!</p>`;
+    for (i = 0; i < quantityNumbers; i++) {
+      sumAll += table[i];
+    }
+    result.innerHTML += `<p> O somatório de todos os valores é ${sumAll}! </p>`;
+    result.innerHTML += `<p> A média dos valores é ${
+      sumAll / quantityNumbers
+    }! </p>`;
+  }
+}
 
-addButton.addEventListener('click', adicionarAtivo)
+const cliquei = () => console.log("cliquei");
 
-generatorButton.addEventListener('click', cliquei)
+addButton.addEventListener("click", adicionarAtivo);
+
+generatorButton.addEventListener("click", cliqueiAtivo);
