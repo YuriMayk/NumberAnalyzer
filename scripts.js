@@ -4,7 +4,6 @@ let receivedNumber = document.querySelector("input#received-number");
 let select = document.querySelector("select#select-select");
 let result = document.querySelector("div#div-result");
 let text = document.createElement("option");
-let verifyFinishClick = 1;
 const table = [];
 
 function adicionarAtivo() {
