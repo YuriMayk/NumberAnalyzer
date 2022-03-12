@@ -27,6 +27,8 @@ function adicionarAtivo() {
     }
   };
   validar();
+  receivedNumber.value = ""
+  receivedNumber.focus()
 }
 
 function cliqueiAtivo() {
