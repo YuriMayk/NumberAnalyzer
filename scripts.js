@@ -27,8 +27,8 @@ function adicionarAtivo() {
     }
   };
   validar();
-  receivedNumber.value = ""
-  receivedNumber.focus()
+  receivedNumber.value = "";
+  receivedNumber.focus();
 }
 
 function cliqueiAtivo() {
@@ -42,18 +42,25 @@ function cliqueiAtivo() {
     for (i = 0; i < quantityNumbers; i++) {
       sumAll += table[i];
     }
-    result.innerHTML = `<p> Foram cadastrados ${quantityNumbers} números!</p> <p> O maior valor cadastrado foi ${
-      table[quantityNumbers - 1]
-    }! </p> <p> O menor valor cadastrado foi ${
-      table[0]
-    }!</p> <p> O somatório de todos os valores é ${sumAll}! </p> <p> A média dos valores é ${
-      sumAll / quantityNumbers
-    }! </p>`;
+    result.innerHTML = `
+    <p> Foram cadastrados ${quantityNumbers} números!</p></br>
+    <p> O maior valor cadastrado foi ${table[quantityNumbers - 1]}! </p></br>
+     <p> O menor valor cadastrado foi ${table[0]}!</p></br>
+      <p> O somatório de todos os valores é ${sumAll}! </p></br>
+       <p> A média dos valores é ${(sumAll / quantityNumbers).toFixed(
+         2
+       )}! </p></br>`;
   }
 }
 
-const cliquei = () => console.log("cliquei");
+const keypress = (e) => {
+  if (e.key === "Enter") {
+    adicionarAtivo();
+  }
+};
 
 addButton.addEventListener("click", adicionarAtivo);
 
 generatorButton.addEventListener("click", cliqueiAtivo);
+
+receivedNumber.addEventListener("keydown", keypress);
