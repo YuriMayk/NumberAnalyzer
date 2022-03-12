@@ -32,6 +32,7 @@ function adicionarAtivo() {
 }
 
 function cliqueiAtivo() {
+  result.innerHTML = "";
   let quantityNumbers = table.length;
   let sumAll = 0;
 
@@ -42,7 +43,7 @@ function cliqueiAtivo() {
     for (i = 0; i < quantityNumbers; i++) {
       sumAll += table[i];
     }
-    result.innerHTML = `
+    result.innerHTML += `
     <p> Foram cadastrados ${quantityNumbers} números!</p></br>
     <p> O maior valor cadastrado foi ${table[quantityNumbers - 1]}! </p></br>
      <p> O menor valor cadastrado foi ${table[0]}!</p></br>
