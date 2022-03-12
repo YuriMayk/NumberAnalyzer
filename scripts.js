@@ -37,17 +37,14 @@ function cliqueiAtivo() {
     alert(`Você precisa adicionar um número, antes de clicar em finalizar.`);
   } else {
     table.sort();
-
-    result.innerHTML += `<p> Foram cadastrados ${quantityNumbers} números!</p>`;
-    result.innerHTML += `<p> O maior valor cadastrado foi ${
-      table[quantityNumbers - 1]
-    }! </p>`;
-    result.innerHTML += `<p> O menor valor cadastrado foi ${table[0]}!</p>`;
     for (i = 0; i < quantityNumbers; i++) {
       sumAll += table[i];
     }
-    result.innerHTML += `<p> O somatório de todos os valores é ${sumAll}! </p>`;
-    result.innerHTML += `<p> A média dos valores é ${
+    result.innerHTML = `<p> Foram cadastrados ${quantityNumbers} números!</p> <p> O maior valor cadastrado foi ${
+      table[quantityNumbers - 1]
+    }! </p> <p> O menor valor cadastrado foi ${
+      table[0]
+    }!</p> <p> O somatório de todos os valores é ${sumAll}! </p> <p> A média dos valores é ${
       sumAll / quantityNumbers
     }! </p>`;
   }
